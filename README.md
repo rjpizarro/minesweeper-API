@@ -4,7 +4,7 @@ API test
 We ask that you complete the following challenge to evaluate your development skills. Please use the programming language and framework discussed during your interview to accomplish the following task.
 
 # The Game
-Develop the classic game of Minesweeper: https://en.wikipedia.org/wiki/Minesweeper_(video_game) - Please see the description section for how the game is set up.
+Develop the classic game of Minesweeper: https://en.wikipedia.org/wiki/Minesweeper_(video_game)
 
 # What to build
 The following is a list of items (prioritized from most important to least important) we wish to see:
