@@ -34,6 +34,4 @@ You do not need to fully complete the challenge. We suggest not to spend more th
  
 What we want to see is how well you handle yourself given the time you spend on the problem, how you think, and how you prioritize when time is insufficient to solve everything.
 
-As soon as you have submitted your solution, we will review the code.
- 
-Reply to ALL when you are finished. 
+Please email your solution as soon as you have completed the challenge or the time is up.
