@@ -8,7 +8,7 @@ Develop the classic game of [Minesweeper](https://en.wikipedia.org/wiki/Mineswee
 
 ## Show your work
 
-1.  Create a Public repository
+1.  Create a Public repository ( please dont make a pull request, clone the private repository and create a new plublic one on your profile)
 2.  Commit each step of your process so we can follow your thought process.
 
 ## What to build
