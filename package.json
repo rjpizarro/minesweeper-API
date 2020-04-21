@@ -1,0 +1,31 @@
+{
+  "name": "minesweeper-api",
+  "version": "1.0.0",
+  "description": "Minesweeper API",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' ./src/app.ts",
+    "tsc": "tsc",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjpizarro/minesweeper-API.git"
+  },
+  "author": "rjpizarro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjpizarro/minesweeper-API/issues"
+  },
+  "homepage": "https://github.com/rjpizarro/minesweeper-API#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.9.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
