@@ -5,6 +5,10 @@ const generateBoard = (rows: number, cols: number, mines: number): BoardType => 
     let availablePositions = rows * cols
     let board = []
 
+    if (availablePositions <= mines) {
+        throw new Error("There is not available positions to place all mines.")
+    }
+
     for (let i = 0; i < rows; i++) {
         let row = []
         for (let j = 0; j < cols; j++) {
@@ -14,19 +18,15 @@ const generateBoard = (rows: number, cols: number, mines: number): BoardType => 
         row = []
     }
 
-    if (availablePositions < mines) {
-        throw new Error("There is not available positions to place all mines.")
-    }
-
-    while (mines >= 0) {
+    while (mines > 0) {
         const rowCord = Math.floor(Math.random() * rows)
         const colCord = Math.floor(Math.random() * cols)
 
         if (board[rowCord][colCord] !== BoardValuesEnum.UNREVEALED_MINE_POSITION) {
             board[rowCord][colCord] = BoardValuesEnum.UNREVEALED_MINE_POSITION
-        }
 
-        mines--
+            mines--
+        }
     }
 
     return board

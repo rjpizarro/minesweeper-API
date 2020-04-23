@@ -16,5 +16,5 @@ export enum BoardValuesEnum {
     BOMB_REVEALED_POSITION = "X",
     MASKED_POSITION = "[]",
     BOMB_FLAGGED = "F",
-    QUESTION_MARK = "F",
+    QUESTION_MARK = "?",
 }
