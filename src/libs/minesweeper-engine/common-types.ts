@@ -1,1 +1,1 @@
-export type BoardType = string[][]
+export type BoardType = (string|number)[][]

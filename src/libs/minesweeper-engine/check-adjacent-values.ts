@@ -3,7 +3,7 @@ import { BoardType } from './common-types'
 import { AdjacentPositionEnum } from './enums'
 
 type AdjacentValuesType = {
-    value: string,
+    value: string|number,
     currentRowChecked: number,
     currentColChecked: number,
     position: AdjacentPositionEnum
@@ -28,7 +28,7 @@ const checkAdjacentValues =  (
 ) => {
     for (let key in positions) {
         const position: AdjacentPositionEnum = positions[key]
-        let adjacentSquareValue: string = ''
+        let adjacentSquareValue: string|number = ''
         let currentRowChecked: number
         let currentColChecked: number
 
@@ -73,9 +73,6 @@ const checkAdjacentValues =  (
                 currentColChecked = col - 1
 
                 break;
-            default:
-                currentColChecked = -1
-                currentRowChecked = -1
         }
 
         if (currentRowChecked >= 0 && currentColChecked >= 0) {
