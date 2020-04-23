@@ -24,8 +24,8 @@ const postMoveController = (req: express.Request, res: express.Response) => {
            {},
            response,
            {
-               board: nextBoard,
-               cheatBoard: prettifyBoard(nextBoard)
+               cheatBoard: prettifyBoard(nextBoard),
+               board: nextBoard
            }
        )
     }
