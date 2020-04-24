@@ -1,5 +1,8 @@
+require('dotenv').config()
 import express from 'express'
 import bodyParser from 'body-parser';
+import mongoose, {Schema} from 'mongoose'
+import getEnvVars from '../envConfig'
 
 //ROUTES
 import {
@@ -9,6 +12,10 @@ import {
     usersRouter,
 } from './api/routes'
 
+const {
+    port,
+    mongoConnect
+} = getEnvVars()
 const app: express.Application = express();
 
 app.use(bodyParser.json())
@@ -18,6 +25,9 @@ app.use('/api', gamesRouter)
 app.use('/api', movesRouter)
 app.use('/api', usersRouter)
 
-app.listen(8000, function () {
-    console.log('App running on port 8000');
+mongoose.connect(`${mongoConnect}`, {useNewUrlParser: true, useUnifiedTopology: true})
+    .catch(err => console.log(`Mongo connection error: ${err}`))
+
+app.listen(port, function () {
+    console.log(`App running on port ${port}`);
 });
