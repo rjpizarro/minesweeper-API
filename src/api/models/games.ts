@@ -7,17 +7,16 @@ const GameSchema = new Schema({
     player: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        required: true
     },
     board: {
         type: Schema.Types.ObjectId,
         ref: "Board",
-        required: true
     },
     score: {
         type: Number,
         default: 0
     },
+    finishedAt: Date,
     deletedAt: Date,
 }, {
     timestamps: true
@@ -28,6 +27,7 @@ interface GameSchemaInterface extends Document {
     createdAt: string,
     updatedAt: string,
     deletedAt: string,
+    finishedAt: string,
 }
 
 interface GameInterface extends GameSchemaInterface {

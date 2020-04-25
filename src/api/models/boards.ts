@@ -1,5 +1,5 @@
-import { Document, Model, model, Schema } from "mongoose"
-import {BoardType} from '../../libs/minesweeper-engine/common-types'
+import { Document, model, Schema } from "mongoose"
+import { BoardType } from '../../libs/minesweeper-engine'
 
 // Schema
 const BoardSchema = new Schema({
@@ -43,7 +43,9 @@ interface BoardSchemaInterface extends Document {
     matrix: BoardType,
     moves: [{
         matrixCreated: BoardType,
-        createdAt: string,
+        createdAt: {
+            type: Date,
+        },
         rowSelected: number,
         colSelected: number,
         value: string,

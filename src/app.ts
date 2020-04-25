@@ -1,8 +1,10 @@
 require('dotenv').config()
 import express from 'express'
 import bodyParser from 'body-parser';
-import mongoose, {Schema} from 'mongoose'
+import mongoose from 'mongoose'
+import swaggerUI from 'swagger-ui-express'
 import getEnvVars from '../envConfig'
+import swaggerConfig from './api/docs/swagger-config'
 
 //ROUTES
 import {
@@ -19,6 +21,7 @@ const {
 const app: express.Application = express();
 
 app.use(bodyParser.json())
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerConfig, { explorer: true }))
 
 app.use('/api', boardsRouter)
 app.use('/api', gamesRouter)

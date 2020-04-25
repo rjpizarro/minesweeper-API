@@ -21,6 +21,7 @@
   "homepage": "https://github.com/rjpizarro/minesweeper-API#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "catchify": "^2.6.1",
     "dot-prop-immutable": "^2.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -36,9 +37,11 @@
     "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
     "@types/mongoose": "^5.7.12",
+    "@types/swagger-ui-express": "^4.1.2",
     "babel-jest": "^25.4.0",
     "jest": "^25.4.0",
     "nodemon": "^2.0.3",
+    "swagger-ui-express": "^4.1.4",
     "ts-node": "^8.9.0",
     "typescript": "^3.8.3"
   }
