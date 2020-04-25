@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' ./src/app.ts",
+    "start-build": "npm run tsc && node ./build/src/app.js",
     "ts-node": "ts-node",
     "tsc": "tsc",
     "test": "jest --coverage"
@@ -26,7 +27,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "lodash": "^4.17.15",
-    "mongoose": "^5.9.10"
+    "mongoose": "^5.9.10",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -42,7 +44,6 @@
     "jest": "^25.4.0",
     "nodemon": "^2.0.3",
     "swagger-ui-express": "^4.1.4",
-    "ts-node": "^8.9.0",
-    "typescript": "^3.8.3"
+    "ts-node": "^8.9.0"
   }
 }
