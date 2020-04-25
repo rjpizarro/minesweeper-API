@@ -4,8 +4,9 @@
   "description": "Minesweeper API",
   "main": "app.js",
   "scripts": {
+    "postinstall": "npm run tsc",
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' ./src/app.ts",
-    "start-build": "npm run tsc && node ./build/src/app.js",
+    "start:server": "node ./build/src/app.js",
     "ts-node": "ts-node",
     "tsc": "tsc",
     "test": "jest --coverage"
