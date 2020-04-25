@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' ./src/app.ts",
+    "start-build": "npm run tsc && node ./build/src/app.js",
     "ts-node": "ts-node",
     "tsc": "tsc",
     "test": "jest --coverage"
