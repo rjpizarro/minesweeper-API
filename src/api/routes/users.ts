@@ -1,6 +1,6 @@
 // VENDOR
 import express from 'express';
-import { routeNotImplemented } from '../../libs/middlewares'
+import { routeNotImplemented } from '../middlewares'
 
 // CONTROLLERS
 import postUserController from '../controllers/users/post-user'

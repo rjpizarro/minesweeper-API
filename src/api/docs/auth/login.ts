@@ -1,9 +1,9 @@
 import { badRequestError } from '../error-response'
 
 export default {
-    tags: ['User'],
-    description: "Create/Register a new user",
-    operationId: 'postUser',
+    tags: ['Auth'],
+    description: "Log in with a register user",
+    operationId: 'login',
     requestBody: {
         content: {
             "application/json": {
@@ -25,7 +25,7 @@ export default {
     },
     responses: {
         "200": {
-            description: "Created user",
+            description: "Logged in user",
             content: {
                 "application/json": {
                     schema: {
@@ -35,6 +35,13 @@ export default {
                                 type: 'string',
                             },
                             username: {
+                                type: 'string',
+                            },
+                            token: {
+                                type: 'string',
+                                description: 'JWT token to use in a subsequent request'
+                            },
+                            createdAt: {
                                 type: 'string',
                             },
                         }

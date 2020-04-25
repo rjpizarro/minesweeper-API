@@ -1,6 +1,6 @@
 // VENDOR
 import express from 'express';
-import { routeNotImplemented } from '../../libs/middlewares'
+import { routeNotImplemented } from '../middlewares'
 
 const boardsRouter: express.Router = express.Router();
 

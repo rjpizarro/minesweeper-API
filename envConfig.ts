@@ -1,6 +1,7 @@
 const ENV = {
     port: process.env.PORT || 8000,
-    mongoConnect: process.env.MONGO_URI,
+    mongoURI: process.env.MONGO_URI,
+    accessToken: process.env.ACCESS_TOKEN
 };
 
 const getEnvVars = () => ENV

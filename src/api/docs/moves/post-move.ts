@@ -1,6 +1,8 @@
+import { badRequestError, unauthorizedError } from '../error-response'
+
 export default {
     tags: ['Moves'],
-    description: "Place a move to a board from a game",
+    description: "Perform an action (reveal a square or place a flag/question mark) in the game",
     operationId: 'postMove',
     requestBody: {
         content: {
@@ -55,6 +57,8 @@ export default {
                     }
                 }
             }
-        }
+        },
+        ...badRequestError,
+        ...unauthorizedError
     }
 }

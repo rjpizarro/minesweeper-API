@@ -18,13 +18,13 @@ import findBoardByGameId from '../../services/boards/get-board-by-game-id'
 import updateBoard from '../../services/boards/update-board-by-id'
 import updateGame from '../../services/games/update-game'
 
-const postMoveController = async (req: express.Request, res: express.Response) => {
+const postMoveController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const { body } = req
     const { gameId, row, col, showBoard, value } = body
     const [error, boardData] = await catchify(findBoardByGameId(gameId))
 
     if (error) {
-        return res.status(400).json(error)
+        return next(error)
     }
 
     let board = boardData.matrix
@@ -63,7 +63,7 @@ const postMoveController = async (req: express.Request, res: express.Response) =
     )
 
     if (updateError) {
-        throw updateError
+        return next(updateError)
     }
 
     const maskedBoard = maskBoard(nextBoard)

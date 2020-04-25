@@ -1,8 +1,8 @@
 import { badRequestError } from '../error-response'
 
 export default {
-    tags: ['User'],
-    description: "Create/Register a new user",
+    tags: ['Auth'],
+    description: "Register a new user",
     operationId: 'postUser',
     requestBody: {
         content: {

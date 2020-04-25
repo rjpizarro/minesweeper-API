@@ -1,6 +1,7 @@
-import {getGameByIdDoc, postGameDoc} from './games'
+import { getGameByIdDoc, postGameDoc } from './games'
 import { postUserDoc } from './users'
-import {postMoveDoc} from './moves'
+import { postMoveDoc } from './moves'
+import { loginDoc, registerDoc } from './auth'
 
 export default {
     openapi: '3.0.1',
@@ -14,7 +15,7 @@ export default {
             description: 'Local'
         },
         {
-            url: 'https://app-dev.herokuapp.com/api',
+            url: 'https://murmuring-basin-21822.herokuapp.com/api',
             description: 'DEV'
         },
     ],
@@ -26,6 +27,8 @@ export default {
             post: postGameDoc,
         },
         '/moves': { post: postMoveDoc },
-        '/users': { post: postUserDoc }
+        '/users': { post: postUserDoc },
+        '/auth/login': { post: loginDoc },
+        '/auth/register': { post: registerDoc }
     }
 }
