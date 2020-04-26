@@ -28,6 +28,10 @@ const postMoveController = async (req: express.Request, res: express.Response, n
         return next(error)
     }
 
+    if (!game) {
+        return next(new Error('Game not found.'))
+    }
+
     if (game.finishedAt) {
         return next(new Error('Cannot perform a move in a finished game.'))
     }
