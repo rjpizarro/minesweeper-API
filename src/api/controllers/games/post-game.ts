@@ -14,6 +14,14 @@ const postGameController = async (req: express.Request, res: express.Response, n
     const { rows, cols, mines } = req.body
     const [error, game] = await catchify(createGame(userId))
 
+    if (!mines) {
+        return next(new Error("You need at least one mine to play"))
+    }
+
+    if (rows <= 2 || cols <= 2) {
+        return next(new Error("You need at least 2 rows and 2 columns to create a board"))
+    }
+
     if (error) {
         return next(error)
     }
