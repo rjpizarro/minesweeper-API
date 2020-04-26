@@ -9,6 +9,15 @@ export default {
         version: '1.0.0',
         title: 'Minesweeper API Document',
     },
+    components: {
+        securitySchemes: {
+            bearerAuth: {
+                type: 'http',
+                scheme: 'bearer',
+                bearerFormat: 'JWT'
+            }
+        }
+    },
     servers: [
         {
             url: 'http://localhost:8000/api',

@@ -4,6 +4,7 @@ export default {
     tags: ['Moves'],
     description: "Perform an action (reveal a square or place a flag/question mark) in the game",
     operationId: 'postMove',
+    security: [ { bearerAuth: [] } ],
     requestBody: {
         content: {
             "application/json": {

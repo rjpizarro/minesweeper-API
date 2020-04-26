@@ -4,6 +4,7 @@ export default {
     tags: ['Games'],
     description: "Create a new game. By default all the games are anonymous. If you want to create a game for a logged-in user, include a jwt authorization token in the header.",
     operationId: 'postGame',
+    security: [ { bearerAuth: [] } ],
     requestBody: {
         content: {
             "application/json": {
