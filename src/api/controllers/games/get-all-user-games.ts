@@ -5,9 +5,6 @@ import express from 'express'
 import catchify from 'catchify'
 
 // SERVICES
-import createGame from '../../services/games/create-game'
-import createBoard from '../../services/boards/create-board'
-import updateGame from '../../services/games/update-game'
 import findGamesBy from '../../services/games/find-games-by'
 
 const getAllUserGamesController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
