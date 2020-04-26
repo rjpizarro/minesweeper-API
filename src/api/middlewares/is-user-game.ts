@@ -4,7 +4,7 @@ import express from 'express'
 import _ from 'lodash'
 
 // SERVICES
-import findGame from '../services/games/find-game-by'
+import findGame from '../services/games/find-one-game-by'
 
 const isUserGame = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const userId = _.get(req, ['user', '_id'], null)

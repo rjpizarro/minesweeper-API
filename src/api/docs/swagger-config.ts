@@ -1,4 +1,4 @@
-import { getGameByIdDoc, postGameDoc } from './games'
+import {getAllUserGamesDoc, getGameByIdDoc, postGameDoc} from './games'
 import { postUserDoc } from './users'
 import { postMoveDoc } from './moves'
 import { loginDoc, registerDoc } from './auth'
@@ -20,11 +20,12 @@ export default {
         },
     ],
     paths: {
+        '/games': {
+            get: getAllUserGamesDoc,
+            post: postGameDoc,
+        },
         '/games/{id}': {
             get: getGameByIdDoc,
-        },
-        '/games': {
-            post: postGameDoc,
         },
         '/moves': { post: postMoveDoc },
         '/users': { post: postUserDoc },

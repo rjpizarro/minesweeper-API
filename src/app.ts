@@ -24,7 +24,7 @@ const {
 const app: express.Application = express();
 
 app.use(bodyParser.json())
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerConfig, { explorer: true }))
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerConfig))
 
 app.use('/api', authRouter)
 app.use('/api', jwtHandler, boardsRouter)
