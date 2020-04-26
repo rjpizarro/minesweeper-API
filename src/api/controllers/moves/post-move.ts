@@ -14,21 +14,33 @@ import {
 } from '../../../libs/minesweeper-engine'
 
 // SERVICES
-import findBoardByGameId from '../../services/boards/get-board-by-game-id'
 import updateBoard from '../../services/boards/update-board-by-id'
 import updateGame from '../../services/games/update-game'
+import findGame from '../../services/games/find-one-game-by'
 
 const postMoveController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const { body } = req
     const { gameId, row, col, showBoard, value } = body
-    const [error, boardData] = await catchify(findBoardByGameId(gameId))
+
+    const [error, game] = await catchify(findGame({_id: gameId}))
 
     if (error) {
         return next(error)
     }
 
-    let board = boardData.matrix
+    if (game.finishedAt) {
+        return next(new Error('Cannot perform a move in a finished game.'))
+    }
+
+    const [populateError, gameWithBoard] = await catchify(game.populate('board').execPopulate())
+
+    if (populateError) {
+        return next(populateError)
+    }
+
+    const boardData = gameWithBoard.board
     const lastMove = _.last(boardData.moves)
+    let board = boardData.matrix
 
     if (lastMove) {
         // @ts-ignore
