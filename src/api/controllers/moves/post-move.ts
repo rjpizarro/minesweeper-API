@@ -46,6 +46,10 @@ const postMoveController = async (req: express.Request, res: express.Response, n
     const lastMove = _.last(boardData.moves)
     let board = boardData.matrix
 
+    if (row >= board.length || col >= board[0].length ) {
+        return next(new Error(`Move out of bounds. Max row value: ${board.length - 1}. Max col value: ${board[0].length - 1}`))
+    }
+
     if (lastMove) {
         // @ts-ignore
         board = lastMove.matrixCreated
