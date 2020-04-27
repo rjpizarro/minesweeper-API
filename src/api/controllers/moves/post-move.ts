@@ -51,14 +51,18 @@ const postMoveController = async (req: express.Request, res: express.Response, n
         board = lastMove.matrixCreated
     }
 
-    let nextBoard;
+    let nextBoard = [];
     let gameOver = false
 
     try {
         nextBoard = executeMove(row, col, board, value)
-    } catch (mineExplosion) {
-        gameOver = true
-        nextBoard = mineExplosion
+    } catch (error) {
+        if (error.message) {
+            return next(error)
+        } else if (Array.isArray(error)) { // it is not an error, is a mine explosion
+            gameOver = true
+            nextBoard = error
+        }
     }
 
     const [updateError, updatedBoard] = await catchify(
@@ -112,8 +116,8 @@ const postMoveController = async (req: express.Request, res: express.Response, n
 
         response = Object.assign(
             {},
-            response,
             { message: "BOOOOM! :'( Oops, game over" },
+            response,
         )
     } else {
         const gameComplete = allMinesDetected(nextBoard)
