@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose'
 import swaggerUI from 'swagger-ui-express'
 import swaggerConfig from './api/docs/swagger-config'
+import cors from 'cors'
 
 //ROUTES
 import {
@@ -24,6 +25,7 @@ const {
 const app: express.Application = express();
 
 app.use(bodyParser.json())
+app.use(cors())
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerConfig))
 
 app.use('/api', authRouter)

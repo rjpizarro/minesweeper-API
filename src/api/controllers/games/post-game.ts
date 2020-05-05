@@ -8,6 +8,7 @@ import catchify from 'catchify'
 import createGame from '../../services/games/create-game'
 import createBoard from '../../services/boards/create-board'
 import updateGame from '../../services/games/update-game'
+import {maskBoard} from '../../../libs/minesweeper-engine'
 
 const postGameController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const userId = _.get(req, ['user', '_id'], null)
@@ -43,7 +44,8 @@ const postGameController = async (req: express.Request, res: express.Response, n
         _id: gameId,
         player: game.player || null,
         score: game.score,
-        board: board
+        board: board,
+        maskedBoard: maskBoard(board.matrix)
     })
 }
 
