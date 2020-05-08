@@ -17,4 +17,5 @@ export enum BoardValuesEnum {
     MASKED_POSITION = "[]",
     BOMB_FLAGGED = "F",
     QUESTION_MARK = "?",
+    RESET_POSITION = "R",
 }

@@ -10,13 +10,14 @@ import {
     calculateScore,
     executeMove,
     maskBoard,
-    prettifyBoard
+    prettifyBoard, revealMines
 } from '../../../libs/minesweeper-engine'
 
 // SERVICES
 import updateBoard from '../../services/boards/update-board-by-id'
 import updateGame from '../../services/games/update-game'
 import findGame from '../../services/games/find-one-game-by'
+import {BoardValuesEnum} from '../../../libs/minesweeper-engine/enums'
 
 const postMoveController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const { body } = req
@@ -42,9 +43,9 @@ const postMoveController = async (req: express.Request, res: express.Response, n
         return next(populateError)
     }
 
-    const boardData = gameWithBoard.board
-    const lastMove = _.last(boardData.moves)
-    let board = boardData.matrix
+    const originalBoard = gameWithBoard.board
+    const lastMove = _.last(originalBoard.moves)
+    let board = originalBoard.matrix
 
     if (row >= board.length || col >= board[0].length ) {
         return next(new Error(`Move out of bounds. Max row value: ${board.length - 1}. Max col value: ${board[0].length - 1}`))
@@ -59,7 +60,13 @@ const postMoveController = async (req: express.Request, res: express.Response, n
     let gameOver = false
 
     try {
-        nextBoard = executeMove(row, col, board, value)
+        let nextValue = value
+
+        if (nextValue === BoardValuesEnum.RESET_POSITION) {
+            nextValue = _.get(originalBoard, ['matrix', row, col])
+        }
+
+        nextBoard = executeMove(row, col, board, nextValue)
     } catch (error) {
         if (error.message) {
             return next(error)
@@ -71,7 +78,7 @@ const postMoveController = async (req: express.Request, res: express.Response, n
 
     const [updateError, updatedBoard] = await catchify(
         updateBoard(
-            boardData._id,
+            originalBoard._id,
             {
                 $push: {
                     moves: {
@@ -98,6 +105,7 @@ const postMoveController = async (req: express.Request, res: express.Response, n
         row,
         value,
         prettyBoard,
+        maskedBoard,
     }
 
     if (showBoard) {
@@ -120,7 +128,11 @@ const postMoveController = async (req: express.Request, res: express.Response, n
 
         response = Object.assign(
             {},
-            { message: "BOOOOM! :'( Oops, game over" },
+            {
+                gameOver: true,
+                message: "BOOOOM! :'( Oops, game over",
+                revealedBoard: revealMines(nextBoard)
+            },
             response,
         )
     } else {
@@ -139,7 +151,10 @@ const postMoveController = async (req: express.Request, res: express.Response, n
 
             response = Object.assign(
                 {},
-                { message: `Congrats!! You found all the mines! :D. Your score is ${score}` },
+                {
+                    gameOver: true,
+                    message: `Congrats!! You found all the mines! :D. Your score is ${score}`
+                },
                 response,
             )
         }

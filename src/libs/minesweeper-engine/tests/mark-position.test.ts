@@ -58,23 +58,6 @@ describe('markPosition', () => {
         expect(board).toStrictEqual(expectedBoard)
     })
 
-    it("should thrown an error when try to add a value different than F or ?", () => {
-        // @ts-ignore
-        expect(() => markPosition(3, 0, mockBoard, BoardValuesEnum.UNREVEALED_EMPTY_POSITION)).toThrowError()
-
-        // @ts-ignore
-        expect(() => markPosition(3, 0, mockBoard, BoardValuesEnum.BLANK_REVEALED_POSITION)).toThrowError()
-
-        // @ts-ignore
-        expect(() => markPosition(3, 0, mockBoard, BoardValuesEnum.UNREVEALED_MINE_POSITION)).toThrowError()
-
-        // @ts-ignore
-        expect(() => markPosition(3, 0, mockBoard, 1)).toThrowError()
-
-        // @ts-ignore
-        expect(() => markPosition(3, 0, mockBoard, BoardValuesEnum.BOMB_REVEALED_POSITION)).toThrowError()
-    })
-
     it("should thrown an error when try to add place a mark in a position already revealed", () => {
         expect(() => markPosition(2, 2, mockBoard, BoardValuesEnum.BOMB_FLAGGED)).toThrowError()
         expect(() => markPosition(0, 3, mockBoard, BoardValuesEnum.BOMB_FLAGGED)).toThrowError()

@@ -4,6 +4,7 @@ import executeMove from './execute-move'
 import generateBoard from './generate-board'
 import maskBoard from './mask-board'
 import prettifyBoard from './prettify-board'
+import revealMines from './reveal-mines'
 import { BoardType } from './common-types'
 
 export {
@@ -14,4 +15,5 @@ export {
     generateBoard,
     maskBoard,
     prettifyBoard,
+    revealMines
 }

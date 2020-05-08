@@ -13,11 +13,8 @@ const markPosition = (
     row: number,
     col: number,
     board: BoardType,
-    mark: BoardValuesEnum.QUESTION_MARK | BoardValuesEnum.BOMB_FLAGGED
+    mark: BoardValuesEnum
 ) => {
-    if (mark !== BOMB_FLAGGED && mark !== QUESTION_MARK) {
-        throw new Error(`${mark}: this mark is not allowed. You can only place a flag (${BOMB_FLAGGED}) or a question mark (${QUESTION_MARK})`)
-    }
     const currentValue = _.get(board, [row, col])
 
     if (typeof currentValue === 'number' || currentValue === BLANK_REVEALED_POSITION) {

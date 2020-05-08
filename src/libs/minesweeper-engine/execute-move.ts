@@ -9,7 +9,7 @@ const executeMove = (
     row: number,
     col: number,
     board: BoardType,
-    value?: BoardValuesEnum.BOMB_FLAGGED |  BoardValuesEnum.QUESTION_MARK
+    value?: BoardValuesEnum
 ): BoardType => {
     const squareValue = _.get(board, [row, col])
 
