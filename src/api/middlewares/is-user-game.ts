@@ -33,7 +33,7 @@ const isUserGame = async (req: express.Request, res: express.Response, next: exp
                 return res.status(401).json({
                     title: 'Unauthorized',
                     code: 401,
-                    message: "The user doesn't have the rights to play the game selected",
+                    message: "The user doesn't have the rights to play the selected game",
                 })
             }
         } else {

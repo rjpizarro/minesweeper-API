@@ -37,6 +37,13 @@ export default {
                             username: {
                                 type: 'string',
                             },
+                            token: {
+                                type: 'string',
+                                description: 'JWT token to use in a subsequent request'
+                            },
+                            createdAt: {
+                                type: 'string',
+                            },
                         }
                     }
                 }
